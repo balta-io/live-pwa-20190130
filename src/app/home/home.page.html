@@ -1,0 +1,46 @@
+<ion-content padding color="primary">
+  <p text-center>
+    <img src="assets/logo.png" width="128" alt="">
+  </p>
+
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>{{ list?.title }}</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let task of list?.tasks">
+      <ion-icon name="checkmark-circle" slot="start" *ngIf="task?.done"></ion-icon>
+      <ion-icon name="radio-button-off" slot="start" *ngIf="!task?.done"></ion-icon>
+      {{ task?.title }}
+      <ion-button slot="end" fill="clear" color="dark">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="showAddTask()">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="showAddList()">
+        <ion-icon name="list"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="document"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
+    <ion-fab-list side="start">
+      <ion-fab-button (click)="showLists()">
+        <ion-icon name="apps"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
